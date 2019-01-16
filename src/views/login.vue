@@ -2,13 +2,13 @@
   <div class="login">
     <!-- :model='用于保存表单中的数据' -->
     <!--:rules设置校验信息  -->
-    <el-form :model="loginForm" :rules="loginRules" class="container">
+    <el-form :model="loginForm" :rules="loginRules" class="container" ref="loginname">
       <el-form-item >
         <div class="avatar">
           <img src="../assets/Snipaste_2019-01-16_21-09-37.png" alt>
         </div>
       </el-form-item>
-      <el-form-item prop='username' ref="loginname">
+      <el-form-item prop='username' >
         <el-input v-model="loginForm.username" prefix-icon="myicon myicon-user"></el-input>
       </el-form-item>
       <el-form-item prop='password'>
@@ -45,7 +45,7 @@ export default {
         if (isok) {
           console.log('登录成功')
         } else {
-          alert('请输入名字 ')
+          alert('请输入信息 ')
         }
       })
     }
