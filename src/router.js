@@ -24,7 +24,7 @@ export default new Router({
       redirect: { name: 'welcome' },
       children: [
         { name: 'welcome', path: 'welcome', component: Welcome },
-        { name: 'userlist', path: 'userlist', component: () => import(/* webpackChunkName: "about" */ './views/userlist.vue') }
+        { name: 'userlist', path: 'userlist', component: () => import(/* webpackChunkName: "userlist" */ './views/userlist.vue') }
       ]
     }
     // {
