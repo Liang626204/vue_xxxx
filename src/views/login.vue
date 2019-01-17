@@ -12,7 +12,7 @@
         <el-input v-model="loginForm.username" prefix-icon="myicon myicon-user"></el-input>
       </el-form-item>
       <el-form-item prop='password'>
-        <el-input v-model="loginForm.password" prefix-icon="myicon myicon-key"></el-input>
+        <el-input v-model="loginForm.password" prefix-icon="myicon myicon-key" @keydown.enter.native="handlelogin"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" class="login-btn" @click="handlelogin">登录</el-button>
@@ -21,12 +21,13 @@
   </div>
 </template>
 <script>
+import { login } from '@/api/index.js'
 export default {
   data () {
     return {
       loginForm: {
-        username: '',
-        password: ''
+        username: 'admin',
+        password: '123456'
       },
       loginRules: {
         username: [
@@ -43,7 +44,22 @@ export default {
       console.log('1111')
       this.$refs.loginname.validate(isok => {
         if (isok) {
-          console.log('登录成功')
+          // console.log('登录成功')
+          login({ username: this.loginForm.username, password: this.loginForm.password })
+            .then(res => {
+              if (res.data.meta.status === 200) {
+                console.log(res)
+                /* 储存token值到本地 */
+                localStorage.setItem('token', res.data.data.token)
+                /* 将用户名存进本地 */
+                localStorage.setItem('username', res.data.data.username)
+                /* 跳转 */
+                this.$router.push({ name: 'home' })
+              } else {
+                // 弹出错误提示信息，res.data.meta.msg
+                this.$message.error(res.data.meta.msg)
+              }
+            })
         } else {
           alert('请输入信息 ')
         }
