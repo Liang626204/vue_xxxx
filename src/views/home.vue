@@ -10,9 +10,9 @@
       :collapse="isCollapse"
       @open="handleOpen"
       @close="handleClose"
-      background-color="#409eff"
-      text-color="#fff"
-      active-text-color="#ffd04b">
+      background-color="#eee"
+      text-color="#000"
+      active-text-color="#666">
       <el-submenu index="1">
         <template slot="title">
           <i class="el-icon-location"></i>

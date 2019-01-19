@@ -18,3 +18,8 @@ axios.interceptors.request.use(function (config) {
 })
 /* 发送请求 */
 export const login = obj => axios.post('login', obj)
+export const userlists = obj => axios.get('users', { params: obj })
+export const adduserinfo = obj => axios.post('users', obj)
+export const delsinge = id => axios.delete(`users/${id}`)
+export const toedieuser = (id, obj) => axios.put(`users/${id}`, obj)
+export const useractive = (uId, type) => axios.put(`users/${uId}/state/${type}`)
