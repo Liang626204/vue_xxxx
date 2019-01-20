@@ -36,7 +36,13 @@
       </div>
     </el-header>
     <el-main>
+      <transition
+      enter-active-class="animated swing"
+      leave-active-class="animated swing"
+      mode="out-in"
+      >
       <router-view/>
+      </transition>
     </el-main>
   </el-container>
 </el-container>

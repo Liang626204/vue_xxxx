@@ -5,6 +5,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './styles/index.scss'
+// import 'https://cdn.bootcss.com/animate.css/3.7.0/animate.css'
 
 // 使用element-ui插件
 Vue.use(ElementUI)

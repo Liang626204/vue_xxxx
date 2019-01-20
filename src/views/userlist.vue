@@ -59,7 +59,6 @@
         <el-pagination
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
-          :current-page="currentPage4"
           :page-sizes="[10, 20, 30, 40]"
           :page-size="10"
           layout="total, sizes, prev, pager, next, jumper"
@@ -132,10 +131,6 @@ export default {
     return {
       searchval: '',
       tableData: [],
-      currentPage1: 5,
-      currentPage2: 5,
-      currentPage3: 5,
-      currentPage4: 4,
       /* 总条数 */
       totallist: 0,
       pagesize: 10,
@@ -280,6 +275,7 @@ export default {
         delsinge(row.id)
           .then(res => {
             console.log(res)
+            this.getlist()
           })
         this.$message({
           type: 'success',
